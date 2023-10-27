@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -12,9 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
+} */
 
-a {
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -23,14 +23,14 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+/* body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
+} */
+/*
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -94,4 +94,112 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+#DZ1 {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
 }
+h3 {
+  /* display: inline; */
+  width: 100%;
+  color:darkblue
+}
+.input {
+ 
+  font-size: 1em;
+}
+#print {
+  /* display: inline-block; */
+  width: 100%;
+  height: 200px;
+  border: 3px solid black;
+}
+/* .color {
+  display: inline-flexbox;
+} */
+span {
+  font-size: 25px;
+  margin: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+input[type="radio"] {
+
+    appearance: none; 
+    height: 42px;
+    width: 42px;
+    padding: 2px;
+    border-radius: 50%;
+}
+input[type="radio"]:checked {
+    background-color: black;
+    background-clip: content-box;
+}
+
+#red input[type="radio"] {
+  border: 10px solid red;
+  color: red;
+}
+
+#green input[type="radio"] {
+  border: 10px solid green;
+  color: green;
+  margin-left: 9px;
+}
+
+#blue input[type="radio"] {
+  border: 10px solid blue;
+  color: blue;
+  margin-left: 30px;
+}
+#red span {
+  color: red;
+}
+#green span {
+  color: green;
+}
+#blue span {
+  color: blue;
+}
+.r, .g, .b {
+  display: inline-block;
+  width: 302px;
+  height: 30px;
+  margin-left: 100px;
+}
+
+#red, #green, #blue {
+  display: inline;
+  margin-bottom: 20px;
+}
+.r {
+  border: 7px solid red;
+}
+.g {
+  border: 7px solid green;
+}
+.b {
+  border: 7px solid blue;
+}
+.r div {
+  width: 300px;
+  height: 28px;
+  margin: 1px;
+  background-color: red;
+}
+.g div {
+  width: 300px;
+  height: 28px;
+  margin: 1px;
+  background-color: green;
+}
+.b div {
+  width: 300px;
+  height: 28px;
+  margin: 1px;
+  background-color: blue;
+}
+
+

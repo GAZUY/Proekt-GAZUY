@@ -13,6 +13,46 @@
         <button>Проверить имя</button>
         <p></p>
     </div>
+    <div id ="DZ1">
+        <h3>Задание 1<br>
+            Реализовать класс, описывающий простой маркер. В классе
+            должны быть следующие компоненты:<br>
+            ■ поле, которое хранит цвет маркера;<br>
+            ■ поле, которое хранит количество чернил в маркере (в про-
+            центах);<br>
+            ■ метод для печати (метод принимает строку и выводит
+            текст соответствующим цветом; текст выводится до тех
+            пор, пока в маркере есть чернила; один не пробельный
+            символ – это 0,5% чернил в маркере).<br>
+            Реализовать класс, описывающий заправляющийся маркер,
+            унаследовав его от. простого маркера и добавив метод для заправки
+            маркера.<br>
+            Продемонстрировать работу написанных методов.</h3>
+            <label><h2>Введите текст для печати</h2></label>
+        <input tupe = "text" class="input" >
+        
+        <h2>Выберете цвет</h2>
+        <label id="red"><span>Красный</span><input type="radio" name="color"  value="red" checked ><div class="r"><div></div></div></label>
+        
+        <label id="green"><span>Зеленый</span><input type="radio" name="color"  value="green" ><div class="g"><div></div></div></label>
+        <label id="blue"><span>Синий</span><input type="radio" name="color"  value="blue" ><div class="b"><div></div></div></label>
+       
+        <button>заправьте чернила</button>
+        <button class="display">Печать</button><hr>
+        <label>Печатаем тут</label>
+        <div id="print"><p></p></div>
+        
+    </div>
+    <!-- <div class="forPrintMachine">
+        <h1>Результат работы класса PrintMachine</h1>
+      </div>
+      <div id="task1">
+        <b></b>
+        <input type="text">
+        <button>Проверить имя</button>
+        <button class="hidden">Проверить пароль</button>
+        <p></p>
+      </div> -->
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
