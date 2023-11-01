@@ -319,24 +319,25 @@ console.log(textConclusion('Today is %1 %2.%3.%4', 'Monday', 10, 8, 2020));
 */
 let lineText: string 
 let color : string
-const inputColor = document.querySelectorAll('input [type="radio"] [name="color"]') as unknown as HTMLInputElement 
 
-  
 const printText = document.querySelector('.display') as HTMLButtonElement
+// const inputColors = document.querySelectorAll('input[type="radio"][name="color"]') as NodeListOf<HTMLInputElement>
 const output2 = document.querySelector('#print p') as HTMLParagraphElement
 const onClickc = function (){
- lineText = (document.querySelector('.input') as HTMLInputElement).value
+  lineText = (document.querySelector('.input') as HTMLInputElement).value
   // output2.innerText += lineText
   const asd = new FullInk('red',20)
- //asd.full(10)
-asd.display(lineText)
-// for (const inputColor of inputColors) {
-//   if (inputColor.checked) {
-//     color = inputColor.value;
-//       break;
-//   }
-// }
-//     console.log(color)
+  //asd.full(10)
+  asd.display(lineText)
+  const inputColor = document.querySelector('input[name="color"]:checked') as HTMLInputElement
+  color = inputColor.value;
+  // for (const inputColor of inputColors) {
+  //   if (inputColor.checked) {
+  //     color = inputColor.value;
+  //     break;
+  //   }
+  // }
+  console.log(color)
 }
 printText?.addEventListener('click', onClickc)
 
