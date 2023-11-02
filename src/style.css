@@ -190,13 +190,13 @@ input[type="radio"]:checked {
   background-color: red;
 }
 .g div {
-  width: 300px;
+  /* width: 300px; */
   height: 28px;
   margin: 1px;
   background-color: green;
 }
 .b div {
-  width: 300px;
+  /* width: 300px; */
   height: 28px;
   margin: 1px;
   background-color: blue;
