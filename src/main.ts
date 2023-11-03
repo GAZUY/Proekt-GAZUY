@@ -317,54 +317,28 @@
 // маркера.
 // Продемонстрировать работу написанных методов.
 // */
-let lineText: string 
-let color1 : string
-let asd:any
-const ink = document.querySelector('.r div') as HTMLDivElement
-const printText = document.querySelector ('.display') as HTMLButtonElement
-// const inputColors = document.querySelectorAll('input[type="radio"][name="color"]') as NodeListOf<HTMLInputElement>
-const output2 = document.querySelector('#print p') as HTMLParagraphElement
-const onClickc = function (){
-  const inputColor = document.querySelector('input[name="color"]:checked') as HTMLInputElement
-  color1 = inputColor.value;
-  lineText = (document.querySelector('.input') as HTMLInputElement).value
- 
-  const asd = new FullInk(color1,100)
-  
-  asd.display(lineText)
- 
-}
-printText?.addEventListener('click', onClickc)
-
 
 class Katridge {
   color: string;
   amount_of_ink: number;
-  constructor(color: string, amount_of_ink: number) {
+  constructor(color: string, amount_of_ink=100) {
       this.color = color;
       this.amount_of_ink = amount_of_ink;
   }
   display(str: string) {
       // let quantity = this.amount_of_ink;
       for (let i = 0; i < str.length; i++) {
-          if (this.amount_of_ink != 0 && str[i] != ' ') {
-            this.amount_of_ink -= 0.5
-            ink.setAttribute('style','width:'+(this.amount_of_ink*3)+'px')
-              output2.textContent += str[i]
-              output2.setAttribute('style','color:'+ this.color)
-          }else if(this.amount_of_ink != 0 && str[i] == ' '){
-            output2.textContent +=  str[i]
-            output2.setAttribute('style','color:'+ this.color)   
+          if (this.amount_of_ink != 0) {
+            if (str[i] != ' ') this.amount_of_ink -= 0.5
+            console.log(this.amount_of_ink)
+            output2.innerHTML += `<span style="color:${this.color}; opacity:${this.amount_of_ink/100}">${str[i]}</span>`
           }else{
-            if (i < str.length){
-              this.amount_of_ink = 100
-              continue
-            }
-       
-             
+            // if (i < str.length){
+            //   this.amount_of_ink = 100
+            //   continue
+            // }
           }
       }
-
   }
 }
 class FullInk extends Katridge{
@@ -372,6 +346,35 @@ class FullInk extends Katridge{
       this.amount_of_ink = 100
   }
 }
+
+let lineText: string 
+let color1 : string
+const ink = document.querySelectorAll('input[name="color"]') as NodeListOf<HTMLInputElement>
+let asd = {} as any
+for (let colors of ink) {
+  asd[colors.value] = {katridge: new FullInk(colors.value), div: document.querySelector(`.${colors.value} div`)}
+}
+console.log(asd)
+const printText = document.querySelector ('.display') as HTMLButtonElement
+const output2 = document.querySelector('#print p') as HTMLParagraphElement
+// const inputColors = document.querySelectorAll('input[type="radio"][name="color"]') as NodeListOf<HTMLInputElement>
+
+const onClickc = function (){
+  let checked = ''
+  for (let color of ink) {
+    if (color.checked) {
+      checked = color.value
+    }
+  }
+  lineText = (document.querySelector('.input') as HTMLInputElement).value
+  
+  asd[checked]?.katridge?.display(lineText) 
+  asd[checked]?.div.setAttribute('style','width:'+(asd[checked]?.katridge?.amount_of_ink*3)+'px')
+}
+printText?.addEventListener('click', onClickc)
+
+
+
 // const asd = new FullInk('red',5)
 //  //asd.full(10)
 // asd.display(lineText)

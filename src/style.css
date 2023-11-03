@@ -118,6 +118,17 @@ h3 {
 /* .color {
   display: inline-flexbox;
 } */
+#print p {
+  margin: 0px;
+  padding: 5px;
+}
+#print span {
+  font-size: 20px;
+  margin: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
 span {
   font-size: 25px;
   margin: 10px;
@@ -163,7 +174,7 @@ input[type="radio"]:checked {
 #blue span {
   color: blue;
 }
-.r, .g, .b {
+.red, .green, .blue {
   display: inline-block;
   width: 302px;
   height: 30px;
@@ -174,28 +185,28 @@ input[type="radio"]:checked {
   display: inline;
   margin-bottom: 20px;
 }
-.r {
+.red {
   border: 7px solid red;
 }
-.g {
+.green {
   border: 7px solid green;
 }
-.b {
+.blue {
   border: 7px solid blue;
 }
-.r div {
-  width: 300px;
+.red div {
+  /* width: 300px; */
   height: 28px;
   margin: 1px;
   background-color: red;
 }
-.g div {
+.green div {
   /* width: 300px; */
   height: 28px;
   margin: 1px;
   background-color: green;
 }
-.b div {
+.blue div {
   /* width: 300px; */
   height: 28px;
   margin: 1px;
