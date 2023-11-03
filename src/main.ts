@@ -329,7 +329,7 @@ const onClickc = function (){
   color1 = inputColor.value;
   lineText = (document.querySelector('.input') as HTMLInputElement).value
  
-  const asd = new FullInk(color1,20)
+  const asd = new FullInk(color1,100)
   
   asd.display(lineText)
  
@@ -345,20 +345,23 @@ class Katridge {
       this.amount_of_ink = amount_of_ink;
   }
   display(str: string) {
-    let a = 0
       // let quantity = this.amount_of_ink;
-      for (let i = a; i < str.length; i++) {
+      for (let i = 0; i < str.length; i++) {
           if (this.amount_of_ink != 0 && str[i] != ' ') {
             this.amount_of_ink -= 0.5
-            output2.setAttribute('style','width:'+ String (this.amount_of_ink) +'px')
+            ink.setAttribute('style','width:'+(this.amount_of_ink*3)+'px')
               output2.textContent += str[i]
               output2.setAttribute('style','color:'+ this.color)
           }else if(this.amount_of_ink != 0 && str[i] == ' '){
             output2.textContent +=  str[i]
             output2.setAttribute('style','color:'+ this.color)   
           }else{
+            if (i < str.length){
+              this.amount_of_ink = 100
+              continue
+            }
        
-              break
+             
           }
       }
 
