@@ -212,5 +212,11 @@ input[type="radio"]:checked {
   margin: 1px;
   background-color: blue;
 }
+.table {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+
+}
 
 

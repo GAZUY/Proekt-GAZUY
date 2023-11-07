@@ -330,7 +330,6 @@ class Katridge {
       for (let i = 0; i < str.length; i++) {
           if (this.amount_of_ink != 0) {
             if (str[i] != ' ') this.amount_of_ink -= 0.5
-            console.log(this.amount_of_ink)
             output2.innerHTML += `<span style="color:${this.color}; opacity:${this.amount_of_ink/100}">${str[i]}</span>`
           }else{
             // if (i < str.length){
@@ -572,4 +571,91 @@ if (input1.value == 'Я Главный') {
 Создать объект класса StyledEmpTable и вывести на экран
 результат работы метода getHtml().
 */
+class Employee {
+ name: string
+ post: string
+ age: number
+ wages: number
+  constructor(name: string, post: string, age: number, wages: number) {
+    this.name = name;
+    this.post = post;
+    this.age = age;
+    this.wages = wages
+  }
+}    
+
+
+// const empl = [
+//   new Employee("Matthew McConaughey", "investment specialist", 44, 5000),
+//   new Employee("Jon Flanagan", "credit specialist", 30, 6000),
+//   new Employee("Jamie Carragher", "auditor", 45, 7000),
+//   new Employee("Robert Fowler", "accountant", 48, 8000),
+//   new Employee("Jamie Vardy", "accountant", 36, 9000)
+// ]
+let empl: Employee[]
+
+class EmpTable {
+  arr
+  constructor(arr: Employee[]) {
+    this.arr = arr;
+  }
+
+  getHtml() {
+    const html = `<table>
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>post</th>
+        <th>age</th>
+        <th>wages</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${this.arr.map(el => `<tr><td>${el.name}</td><td>${el.post}</td><td>${el.age}</td><td>${el.wages}</td></tr>`).join('')}
+      </tbody>
+      </table>`
+    document.body.insertAdjacentHTML('beforeend', html)
+    return html
+  }
+}
+
+
+
+class StyledEmpTable extends EmpTable {
+  getStyles() {
+    return `<style> table { color:red } </style>`
+  }
+  getHtml(): string {
+    document.head.insertAdjacentHTML('beforeend', this.getStyles())
+    return super.getHtml()
+  }
+}
+// const table = new EmpTable(empl).getHtml()
+// const StyledTable = new StyledEmpTable(empl)
+// StyledTable.getHtml()
+let table
+let StyledTable
+
+let name: string
+let post: string
+let age: number
+let wages: number
+
+const maintain_Data = document.querySelector ('.maintain_data') as HTMLButtonElement
+
+const dataEnter = function(){
+   name = (document.querySelector('.name') as HTMLInputElement).value
+   post = (document.querySelector('.post') as HTMLInputElement).value
+   age = +(document.querySelector('.age') as HTMLInputElement).value
+   wages = +(document.querySelector('.wages') as HTMLInputElement).value
+   empl = [
+    new Employee(name, post, age, wages),
+   ]
+   table = new EmpTable(empl).getHtml()
+ StyledTable = new StyledEmpTable(empl)
+StyledTable.getHtml()
+   maintain_Data?.addEventListener('click', dataEnter)
+ 
+}
+
 
