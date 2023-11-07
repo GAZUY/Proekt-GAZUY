@@ -592,7 +592,27 @@ class Employee {
 //   new Employee("Robert Fowler", "accountant", 48, 8000),
 //   new Employee("Jamie Vardy", "accountant", 36, 9000)
 // ]
+let name: string
+let post: string
+let age: number
+let wages: number
+const maintain_Data = document.querySelector ('.maintain_data') as HTMLButtonElement
 let empl: Employee[]
+const dataEnter = function(){
+   name = (document.querySelector('.name') as HTMLInputElement).value
+   post = (document.querySelector('.post') as HTMLInputElement).value
+   age = +(document.querySelector('.age') as HTMLInputElement).value
+   wages = +(document.querySelector('.wages') as HTMLInputElement).value
+   console.log(name, post, age, wages)
+    empl = [
+    new Employee(name, post, age, wages),
+  ]
+}
+maintain_Data?.addEventListener('click', dataEnter)
+// const empl = [
+//   new Employee(name, post, age, wages),
+// ]
+
 
 class EmpTable {
   arr
@@ -630,32 +650,25 @@ class StyledEmpTable extends EmpTable {
     return super.getHtml()
   }
 }
-// const table = new EmpTable(empl).getHtml()
-// const StyledTable = new StyledEmpTable(empl)
-// StyledTable.getHtml()
-let table
-let StyledTable
-
-let name: string
-let post: string
-let age: number
-let wages: number
-
-const maintain_Data = document.querySelector ('.maintain_data') as HTMLButtonElement
-
-const dataEnter = function(){
-   name = (document.querySelector('.name') as HTMLInputElement).value
-   post = (document.querySelector('.post') as HTMLInputElement).value
-   age = +(document.querySelector('.age') as HTMLInputElement).value
-   wages = +(document.querySelector('.wages') as HTMLInputElement).value
-   empl = [
-    new Employee(name, post, age, wages),
-   ]
-   table = new EmpTable(empl).getHtml()
- StyledTable = new StyledEmpTable(empl)
+const table = new EmpTable(empl).getHtml()
+const StyledTable = new StyledEmpTable(empl)
 StyledTable.getHtml()
-   maintain_Data?.addEventListener('click', dataEnter)
- 
-}
+
+
+// let name: string
+// let post: string
+// let age: number
+// let wages: number
+
+// const maintain_Data = document.querySelector ('.maintain_data') as HTMLButtonElement
+
+// const dataEnter = function(){
+//    name = (document.querySelector('.name') as HTMLInputElement).value
+//    post = (document.querySelector('.post') as HTMLInputElement).value
+//    age = +(document.querySelector('.age') as HTMLInputElement).value
+//    wages = +(document.querySelector('.wages') as HTMLInputElement).value
+//    console.log(name, post, age, wages)
+// }
+// maintain_Data?.addEventListener('click', dataEnter)
 
 
