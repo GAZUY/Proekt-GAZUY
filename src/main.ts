@@ -607,6 +607,9 @@ const dataEnter = function(){
     empl = [
     new Employee(name, post, age, wages),
   ]
+  const table = new EmpTable(empl).getHtml()
+const StyledTable = new StyledEmpTable(empl)
+StyledTable.getHtml()
 }
 maintain_Data?.addEventListener('click', dataEnter)
 // const empl = [
@@ -650,9 +653,9 @@ class StyledEmpTable extends EmpTable {
     return super.getHtml()
   }
 }
-const table = new EmpTable(empl).getHtml()
-const StyledTable = new StyledEmpTable(empl)
-StyledTable.getHtml()
+// const table = new EmpTable(empl).getHtml()
+// const StyledTable = new StyledEmpTable(empl)
+// StyledTable.getHtml()
 
 
 // let name: string
