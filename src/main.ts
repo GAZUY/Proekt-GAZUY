@@ -347,7 +347,7 @@ class FullInk extends Katridge{
 }
 
 let lineText: string 
-let color1 : string
+// let color1 : string
 const ink = document.querySelectorAll('input[name="color"]') as NodeListOf<HTMLInputElement>
 let asd = {} as any
 for (let colors of ink) {
@@ -597,16 +597,16 @@ let post: string
 let age: number
 let wages: number
 const maintain_Data = document.querySelector ('.maintain_data') as HTMLButtonElement
-let empl: Employee[]
+let divTable = document.querySelector ('#table') as HTMLDivElement
+let empl: Employee[] = []
 const dataEnter = function(){
    name = (document.querySelector('.name') as HTMLInputElement).value
    post = (document.querySelector('.post') as HTMLInputElement).value
    age = +(document.querySelector('.age') as HTMLInputElement).value
    wages = +(document.querySelector('.wages') as HTMLInputElement).value
-   console.log(name, post, age, wages)
-    empl = [
-    new Employee(name, post, age, wages),
-  ]
+   
+    empl.push(new Employee(name, post, age, wages))
+    console.log(empl)
   const table = new EmpTable(empl).getHtml()
 const StyledTable = new StyledEmpTable(empl)
 StyledTable.getHtml()
@@ -627,6 +627,7 @@ class EmpTable {
     const html = `<table>
     <thead>
       <tr>
+        <th>№</th>
         <th>name</th>
         <th>post</th>
         <th>age</th>
@@ -634,10 +635,11 @@ class EmpTable {
       </tr>
     </thead>
     <tbody>
-      ${this.arr.map(el => `<tr><td>${el.name}</td><td>${el.post}</td><td>${el.age}</td><td>${el.wages}</td></tr>`).join('')}
+      ${this.arr.map((el,index) => `<tr><td>${index+1}</td><td>${el.name}</td><td>${el.post}</td><td>${el.age}</td><td>${el.wages}</td></tr>`).join('')}
       </tbody>
       </table>`
-    document.body.insertAdjacentHTML('beforeend', html)
+      divTable.innerHTML = "" 
+    divTable.insertAdjacentHTML('beforeend', html)
     return html
   }
 }
@@ -646,7 +648,28 @@ class EmpTable {
 
 class StyledEmpTable extends EmpTable {
   getStyles() {
-    return `<style> table { color:red } </style>`
+    return `<style>table {
+      font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+      font-size: 14px;
+      border-collapse: collapse;
+      text-align: center;
+      }
+      th, td:first-child {
+      background: #AFCDE7;
+      color: white;
+      padding: 10px 20px;
+      }
+      th, td {
+      border-style: solid;
+      border-width: 0 1px 1px 0;
+      border-color: white;
+      }
+      td {
+      background: #D8E6F3;
+      }
+      th:first-child, td:first-child {
+      text-align: left;
+      } </style>`
   }
   getHtml(): string {
     document.head.insertAdjacentHTML('beforeend', this.getStyles())
