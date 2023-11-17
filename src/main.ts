@@ -765,6 +765,7 @@ console.log(lists)
 lists.forEach(el => {
   el.onmouseover = function(event) {
     let target = event.target as HTMLElement
+    if (target.tagName == 'SPAN')
     target.className = "boldFont" 
   }
   el.onmouseout = function(event) {
