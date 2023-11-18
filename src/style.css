@@ -237,4 +237,11 @@ input[type="radio"]:checked {
   font-weight: bolder;
 
  }
- 
+ .Modul_3_4_Week_12-3 li:hover {
+  cursor: pointer;
+ }
+ .choice {
+  font-size: 1.5em;
+  font-weight: 600;
+  background-color: coral;
+ }

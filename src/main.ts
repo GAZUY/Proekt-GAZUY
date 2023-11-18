@@ -710,7 +710,7 @@ class StyledEmpTable extends EmpTable {
 
 const ulLi = document.querySelectorAll('.Modul_3_4_Week_12-1 li a') as NodeListOf<HTMLAnchorElement>
 ulLi.forEach(el => {
-  console.log(el)
+ 
   if (el.getAttribute('href')?.includes('http')) {
     el.classList.add('dotted_underline')
   }
@@ -723,6 +723,20 @@ ulLi.forEach(el => {
 разворачиваться. При наведении на элемент, шрифт должен ста-
 новится жирным (с помощью CSS).
 */
+let menu = document.querySelector('.Modul_3_4_Week_12-2') as HTMLDivElement
+let lists = menu.querySelectorAll('li')
+// let span = document.createElement('span')
+// lists.forEach(el => {
+//   el.prepend(span)
+//   // span.append(span.nextSibling)
+// })
+menu.onclick = function (event) {
+  const target = event.target as HTMLElement
+  // @ts-ignore
+  let childrenContainer = target.parentNode.querySelector('ul')
+  if (childrenContainer) childrenContainer.classList.toggle('hide')
+      
+}
 /*
 Задание 3
 Создать html-страницу со списком книг.
@@ -734,6 +748,37 @@ ulLi.forEach(el => {
 была зажата клавиша Shift, то к выделению добавляются все
 элементы в промежутке от предыдущего кликнутого до текущего.
 */
+let bookList = document.querySelector('.Modul_3_4_Week_12-3') as HTMLDivElement
+let listsTag = bookList.querySelectorAll('li')
+console.log (listsTag)
+bookList.onclick = function (event){
+  let target = event.target as HTMLElement
+  if (target.tagName == 'LI' && !event.ctrlKey && !event.shiftKey){
+  for (let el of listsTag){
+    el.classList.remove('choice')
+  }
+  target.classList.add('choice')
+  }
+  if (target.tagName == 'LI' && event.ctrlKey) target.classList.toggle('choice')
+  if (target.tagName == 'LI' && event.shiftKey){
+    let lastActive: any
+    let targetIndex = 0
+    let lastActiveIndex = 0
+    listsTag.forEach((el, i) => {
+      if (el == target) targetIndex = i
+      if (el == lastActive) lastActiveIndex = i
+    })
+    console.log(targetIndex)
+    console.log(lastActiveIndex)
+    for (let i = Math.min(targetIndex, lastActiveIndex); i <= Math.max(targetIndex, lastActiveIndex); i++) {
+      listsTag[i].classList.add('choice')
+    }
+  } 
+}
+
+
+
+
 /*
 Задание 4
 Создать html-страницу для отображения/редактирования текста.
@@ -784,17 +829,3 @@ Ctrl + S, вместо textarea появляет div с уже измененн�
 //   })
 // })
 
-let menu = document.querySelector('.Modul_3_4_Week_12-2') as HTMLDivElement
-let lists = menu.querySelectorAll('li')
-// let span = document.createElement('span')
-// lists.forEach(el => {
-//   el.prepend(span)
-//   // span.append(span.nextSibling)
-// })
-menu.onclick = function (event) {
-  const target = event.target as HTMLElement
-  // @ts-ignore
-  let childrenContainer = target.parentNode.querySelector('ul')
-  if (childrenContainer) childrenContainer.classList.toggle('hide')
-      
-}
