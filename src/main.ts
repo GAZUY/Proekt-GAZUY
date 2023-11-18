@@ -789,6 +789,14 @@ Ctrl + S, вместо textarea появляет div с уже измененн�
 Не забудьте выключить поведение по умолчанию для этих соче-
 таний клавиш.
 */
+let workingWithText = document.querySelector('.Modul_3_4_Week_12-3') as HTMLDivElement
+workingWithText.onkeydown = function(event){
+  // let target = event.target as HTMLElement
+  // event.preventDefault()
+  if (event.ctrlKey && event.code){
+    
+  }
+}
 /*
 Задание 5
 Создать html-страницу с большой таблицей.
