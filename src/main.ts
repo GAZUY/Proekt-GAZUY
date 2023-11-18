@@ -758,27 +758,43 @@ Ctrl + S, вместо textarea появляет div с уже измененн�
 Реализовать возможность изменять размер блока, если зажать
 мышку в правом нижнем углу и тянуть ее дальше.
 */
+// let menu = document.querySelector('.Modul_3_4_Week_12-2') as HTMLDivElement
+// let lists = menu.querySelectorAll('li')
+// console.log(lists)
+
+// lists.forEach(el => {
+//   el.onmouseover = function(event) {
+//     let target = event.target as HTMLElement
+//     if (target.tagName == 'SPAN')
+//     target.className = "boldFont" 
+//   }
+//   el.onmouseout = function(event) {
+//     let target = event.target as HTMLElement
+//     if (target.tagName == 'SPAN')
+//     target.className = "" 
+//   }
+//   el.addEventListener('click', (e: MouseEvent) => {
+//     const target = e.target as HTMLElement
+//     const li = target.closest('li') as HTMLElement
+//     if (li == e.currentTarget) {
+//       const ul = li.querySelector('ul')
+//       if (ul) ul.classList.toggle('hide')
+      
+//     }
+//   })
+// })
+
 let menu = document.querySelector('.Modul_3_4_Week_12-2') as HTMLDivElement
 let lists = menu.querySelectorAll('li')
-console.log(lists)
-
-lists.forEach(el => {
-  el.onmouseover = function(event) {
-    let target = event.target as HTMLElement
-    if (target.tagName == 'SPAN')
-    target.className = "boldFont" 
-  }
-  el.onmouseout = function(event) {
-    let target = event.target as HTMLElement
-    target.className = "" 
-  }
-  el.addEventListener('click', (e: MouseEvent) => {
-    const target = e.target as HTMLElement
-    const li = target.closest('li') as HTMLElement
-    if (li == e.currentTarget) {
-      const ul = li.querySelector('ul')
-      if (ul) ul.classList.toggle('hide')
+// let span = document.createElement('span')
+// lists.forEach(el => {
+//   el.prepend(span)
+//   // span.append(span.nextSibling)
+// })
+menu.onclick = function (event) {
+  const target = event.target as HTMLElement
+  // @ts-ignore
+  let childrenContainer = target.parentNode.querySelector('ul')
+  if (childrenContainer) childrenContainer.classList.toggle('hide')
       
-    }
-  })
-})
+}
