@@ -585,30 +585,30 @@ class Employee {
 }    
 
 
-// const empl = [
-//   new Employee("Matthew McConaughey", "investment specialist", 44, 5000),
-//   new Employee("Jon Flanagan", "credit specialist", 30, 6000),
-//   new Employee("Jamie Carragher", "auditor", 45, 7000),
-//   new Employee("Robert Fowler", "accountant", 48, 8000),
-//   new Employee("Jamie Vardy", "accountant", 36, 9000)
-// ]
+let empl = [
+  new Employee("Matthew McConaughey", "investment specialist", 44, 5000),
+  new Employee("Jon Flanagan", "credit specialist", 30, 6000),
+  new Employee("Jamie Carragher", "auditor", 45, 7000),
+  new Employee("Robert Fowler", "accountant", 48, 8000),
+  new Employee("Jamie Vardy", "accountant", 36, 9000)
+]
 let name: string
 let post: string
 let age: number
 let wages: number
 const maintain_Data = document.querySelector ('.maintain_data') as HTMLButtonElement
 let divTable = document.querySelector ('#table') as HTMLDivElement
-let empl: Employee[] = []
+let empl1: Employee[] = []
 const dataEnter = function(){
    name = (document.querySelector('.name') as HTMLInputElement).value
    post = (document.querySelector('.post') as HTMLInputElement).value
    age = +(document.querySelector('.age') as HTMLInputElement).value
    wages = +(document.querySelector('.wages') as HTMLInputElement).value
    
-    empl.push(new Employee(name, post, age, wages))
-    console.log(empl)
+    empl1.push(new Employee(name, post, age, wages))
+    // console.log(empl)
   const table = new EmpTable(empl).getHtml()
-  console.log(table)
+  // console.log(table)
 const StyledTable = new StyledEmpTable(empl)
 StyledTable.getHtml()
 }
@@ -790,13 +790,12 @@ Ctrl + S, вместо textarea появляет div с уже измененн�
 таний клавиш.
 */
 let workingWithText = document.querySelector('.Modul_3_4_Week_12-3') as HTMLDivElement
-workingWithText.onkeydown = function(event){
-  // let target = event.target as HTMLElement
-  // event.preventDefault()
-  if (event.ctrlKey && event.code){
-    
+workingWithText.addEventListener('keydown', function(event) {
+  if (event.code === "KeyE" && event.ctrlKey) {
+    event.preventDefault()
+    return false
   }
-}
+})
 /*
 Задание 5
 Создать html-страницу с большой таблицей.
@@ -805,6 +804,22 @@ workingWithText.onkeydown = function(event){
 ртированы по возрасту. Учтите, что числовые значения должны
 сортироваться как числа, а не как строки.
 */
+let sortableTable = document.querySelector('#table') as HTMLTableElement
+if (sortableTable != null || sortableTable != undefined) {
+  sortableTable.onclick = function(event) {
+    let target = event.target as any
+    if (target.tagName == 'TH') {
+    let th = event.target as HTMLElement
+    let asdf = th.innerHTML
+    // @ts-ignore
+    empl.sort((a,b)=>a.age - (b.age))
+    console.log(th.innerHTML )
+    console.log(empl)
+    
+  }
+
+}
+}
 /*
 Задание 6
 Создать html-страницу с блоком текста в рамочке.
