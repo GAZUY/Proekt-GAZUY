@@ -858,7 +858,7 @@ for (let i = 0; i < 16; i ++){
   elDiv.push(document.createElement ('div'))
   elDiv[i].setAttribute('id', `D${i}`)
   elDiv[i].setAttribute('data', `${i}`)
-  elDiv[i].insertAdjacentHTML('afterbegin', `<p>${i}</p>`) 
+  // elDiv[i].insertAdjacentHTML('afterbegin', `<p>${i}</p>`) 
 }
 const shuffleArray = (array: any[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -872,16 +872,23 @@ shuffleArray(elDiv)
 elDiv.map((el) => tag.appendChild(el))
 tag.onclick = function(event){
   let target = event.target as any
-    if (target.tagName == 'DIV'|| target.tagName == 'P'){
-      if (elDiv[elDiv.indexOf(target)-1].getAttribute('id') == "D0"){
-        let atr = elDiv[elDiv.indexOf(target)-1].getAttribute('id')
-        elDiv[elDiv.indexOf(target)-1].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
+    if (target.tagName == 'DIV'){
+      let d0 = document.querySelector('#D0') as HTMLDivElement
+      console.log(elDiv.indexOf(d0))
+      if (Math.max(elDiv.indexOf(d0), elDiv.indexOf(target)) - Math.min(elDiv.indexOf(d0), elDiv.indexOf(target)) == 1 || Math.max(elDiv.indexOf(d0), elDiv.indexOf(target)) - Math.min(elDiv.indexOf(d0), elDiv.indexOf(target)) == 4){
+        let atr = elDiv[elDiv.indexOf(d0)].getAttribute('id')
+        elDiv[elDiv.indexOf(d0)].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
         elDiv[elDiv.indexOf(target)].setAttribute('id', `${atr}`)
+       
         console.log(elDiv[elDiv.indexOf(target)])
       }
       //console.log(elDiv[elDiv.indexOf(target)]) 
     }
 }
+// (let i = Math.min(targetIndex, lastActiveIndex); i <= Math.max(targetIndex, lastActiveIndex); i++)
+ // let atr = elDiv[elDiv.indexOf(target)-1].getAttribute('id')
+        // elDiv[elDiv.indexOf(target)-1].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
+        // elDiv[elDiv.indexOf(target)].setAttribute('id', `${atr}`)
  // const temp = elDiv[elDiv.indexOf(target)-1]
         // elDiv[elDiv.indexOf(target)-1] = elDiv[elDiv.indexOf(target)]
         // elDiv[elDiv.indexOf(target)] = temp
