@@ -250,3 +250,33 @@ input[type="radio"]:checked {
   font-size: 20px;
   padding: 3%;
 }
+#TAG {
+  box-sizing: border-box;
+  line-height: 0;
+  width: 210px;
+  height: 210px;
+  border: solid #803a00 5px;
+  background-color: #ecd8c8;
+
+}
+#D1, #D2, #D3, #D4, #D5, #D6, #D7, #D8, #D9, #D10, #D11, #D12, #D13, #D14, #D15 {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  text-align: center;
+  border: solid #cd6165 2px;
+  background-color: #acd7bc;
+  /* margin: -1.5px auto; */
+}
+#TAG div p {
+  font-size: 25px;
+  font-weight: bold;
+}
+#D0 {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  text-align: center;
+  border: solid #cd6165 2px;
+  background-color: #ecd8c8;
+}

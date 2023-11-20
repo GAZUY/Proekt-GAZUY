@@ -851,4 +851,67 @@ if (sortableTable != null || sortableTable != undefined) {
 //     }
 //   })
 // })
+// ПЯТНАШКИ
+const tag = document.querySelector('#TAG') as HTMLDivElement
+let elDiv: HTMLDivElement[] = []
+for (let i = 0; i < 16; i ++){
+  elDiv.push(document.createElement ('div'))
+  elDiv[i].setAttribute('id', `D${i}`)
+  elDiv[i].setAttribute('data', `${i}`)
+  elDiv[i].insertAdjacentHTML('afterbegin', `<p>${i}</p>`) 
+}
+const shuffleArray = (array: any[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+shuffleArray(elDiv)
+elDiv.map((el) => tag.appendChild(el))
+tag.onclick = function(event){
+  let target = event.target as any
+    if (target.tagName == 'DIV'|| target.tagName == 'P'){
+      if (elDiv[elDiv.indexOf(target)-1].getAttribute('id') == "D0"){
+        let atr = elDiv[elDiv.indexOf(target)-1].getAttribute('id')
+        elDiv[elDiv.indexOf(target)-1].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
+        elDiv[elDiv.indexOf(target)].setAttribute('id', `${atr}`)
+        console.log(elDiv[elDiv.indexOf(target)])
+      }
+      //console.log(elDiv[elDiv.indexOf(target)]) 
+    }
+}
+ // const temp = elDiv[elDiv.indexOf(target)-1]
+        // elDiv[elDiv.indexOf(target)-1] = elDiv[elDiv.indexOf(target)]
+        // elDiv[elDiv.indexOf(target)] = temp
+        // elDiv.map((el) => tag.appendChild(el))
+//elem.getAttribute(name)
+// console.log(elDiv)
+// const temp = elDiv[0];
+// elDiv[0] = elDiv[1];
+// elDiv[1] = temp;
+// elDiv.map((el) => tag.appendChild(el))
+// console.log(elDiv)
+// [elDiv[0], elDiv[1]]=[elDiv[1], elDiv[0]]
+
+// tag.appendChild(elDiv[i])
+// elDiv.map((el,index) => el.setAttribute('id', `D${index}`))
+// elDiv.map((el,index) => el.setAttribute('data', `${index}`))
+// elDiv.forEach((el,index) => el.insertAdjacentHTML('afterbegin', `<p>${index}</p>`))
+// const shuffleArray = (array: any[]) => {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     const temp = array[i];
+//     array[i] = array[j];
+//     array[j] = temp;
+//   }
+// }
+// shuffleArray(elDiv)
+// let divTag = tag.querySelectorAll('div')
+// shuffleArray(divTag)
+// console.log(divTag)
+
+
+// console.log(elDiv)
 
