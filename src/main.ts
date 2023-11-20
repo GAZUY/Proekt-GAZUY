@@ -885,6 +885,7 @@ tag.onclick = function(event){
       //console.log(elDiv[elDiv.indexOf(target)]) 
     }
 }
+// src/main.ts
 // (let i = Math.min(targetIndex, lastActiveIndex); i <= Math.max(targetIndex, lastActiveIndex); i++)
  // let atr = elDiv[elDiv.indexOf(target)-1].getAttribute('id')
         // elDiv[elDiv.indexOf(target)-1].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
