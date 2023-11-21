@@ -854,26 +854,79 @@ if (sortableTable != null || sortableTable != undefined) {
 // ПЯТНАШКИ
 const tag = document.querySelector('#TAG') as HTMLDivElement
 let elDiv: HTMLDivElement[] = []
-for (let i = 0; i < 16; i ++){
+for (let i = 1; i < 16; i ++){
   elDiv.push(document.createElement ('div'))
-  elDiv[i].setAttribute('id', `D${i}`)
-  elDiv[i].setAttribute('data', `${i}`)
+  elDiv[i-1].setAttribute('id', `D${i}`)
+  elDiv[i-1].setAttribute('data', `${i}`)
+}
+elDiv.push(document.createElement ('div'))
+  elDiv[15].setAttribute('id', `D${0}`)
+  elDiv[15].setAttribute('data', `${0}`) 
+ // if (i == 14){
+  //   i = 0
+  //   elDiv.push(document.createElement ('div'))
+  //   elDiv[i].setAttribute('id', `D${i}`)
+  // elDiv[i].setAttribute('data', `${i}`)
+  //  }
   // elDiv[i].insertAdjacentHTML('afterbegin', `<p>${i}</p>`) 
+
+// const shuffleArray = (array: any[]) => {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     const temp = array[i];
+//     array[i] = array[j];
+//     array[j] = temp;
+//   }
+
+ 
+// }
+// shuffleArray(elDiv)
+function shuffleArray (indexD0:number){
+  let whereToMove
+  
+  do {
+      
+let round = []
+if (indexD0 + 4 <= 15 && 0 <= indexD0 + 4 ) round.push(indexD0 + 4)
+if (indexD0 - 4 <= 15 && 0 <= indexD0 - 4 ) round.push(indexD0 - 4)
+if (indexD0 + 1 <= 15 && 0 <= indexD0 + 1 ) round.push(indexD0 + 1)
+if (indexD0 - 1 <= 15 && 0 <= indexD0 - 1 ) round.push(indexD0 - 1)
+whereToMove = round[Math.floor(Math.random() * round.length)]
+let atr1 = elDiv[indexD0].getAttribute('id')
+        elDiv[indexD0].setAttribute('id', `${elDiv[whereToMove].getAttribute('id')}`)
+        elDiv[whereToMove].setAttribute('id', `${atr1}`)
+        indexD0 = whereToMove    
+      
+} while (indexD0 != 15);
 }
-const shuffleArray = (array: any[]) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-}
-shuffleArray(elDiv)
+
 elDiv.map((el) => tag.appendChild(el))
+let d0 = document.querySelector('#D0') as HTMLDivElement
+
+// function shuffleArray (indexD0:number){
+//   let whereToMove
+//   let i = 0
+//   do {
+    
+// let round = []
+// if (indexD0 + 4 <= 15 && 0 <= indexD0 + 4 ) round.push(indexD0 + 4)
+// if (indexD0 - 4 <= 15 && 0 <= indexD0 - 4 ) round.push(indexD0 - 4)
+// if (indexD0 + 1 <= 15 && 0 <= indexD0 + 1 ) round.push(indexD0 + 1)
+// if (indexD0 - 1 <= 15 && 0 <= indexD0 - 1 ) round.push(indexD0 - 1)
+// whereToMove = round[Math.floor(Math.random() * round.length)]
+// let atr1 = elDiv[indexD0].getAttribute('id')
+//         elDiv[indexD0].setAttribute('id', `${elDiv[whereToMove].getAttribute('id')}`)
+//         elDiv[whereToMove].setAttribute('id', `${atr1}`)
+//         indexD0 = whereToMove
+//         i ++
+// } while (indexD0 != 15);
+// }
+shuffleArray(elDiv.indexOf(d0))
+console.log(elDiv.indexOf(d0))
 tag.onclick = function(event){
   let target = event.target as any
     if (target.tagName == 'DIV'){
-      let d0 = document.querySelector('#D0') as HTMLDivElement
+       let d0 = document.querySelector('#D0') as HTMLDivElement
       console.log(elDiv.indexOf(d0))
       if (Math.max(elDiv.indexOf(d0), elDiv.indexOf(target)) - Math.min(elDiv.indexOf(d0), elDiv.indexOf(target)) == 1 || Math.max(elDiv.indexOf(d0), elDiv.indexOf(target)) - Math.min(elDiv.indexOf(d0), elDiv.indexOf(target)) == 4){
         let atr = elDiv[elDiv.indexOf(d0)].getAttribute('id')
@@ -882,7 +935,7 @@ tag.onclick = function(event){
        
         console.log(elDiv[elDiv.indexOf(target)])
       }
-      //console.log(elDiv[elDiv.indexOf(target)]) 
+      console.log(elDiv[elDiv.indexOf(target)]) 
     }
 }
 // src/main.ts
