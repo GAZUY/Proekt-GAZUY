@@ -883,7 +883,7 @@ elDiv.push(document.createElement ('div'))
 // shuffleArray(elDiv)
 function shuffleArray (indexD0:number){
   let whereToMove
-for (let i = 0; i <9; i++){  
+// for (let i = 0; i <9; i++){  
   do {
   let round = []
 if (indexD0 + 4 <= 15 && 0 <= indexD0 + 4 ) round.push(indexD0 + 4)
@@ -897,7 +897,7 @@ let atr1 = elDiv[indexD0].getAttribute('id')
         indexD0 = whereToMove    
       
 } while (indexD0 != 15);
-}
+// }
 }
 
 elDiv.map((el) => tag.appendChild(el))
@@ -934,12 +934,21 @@ tag.onclick = function(event){
         elDiv[elDiv.indexOf(d0)].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
         elDiv[elDiv.indexOf(target)].setAttribute('id', `${atr}`)
       }
-      const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
-      for (let i = 0; i< tagEl.length; i ++){
-        if(parseFloat(tagEl[i].getAttribute('id'))-1 == i)
+      // const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
+      for (let i = 0; i< 16; i ++){
+        console.log(elDiv[i].getAttribute('id'))
+        console.log("D"+ (i+1))
+        
+        if(parseInt(elDiv[i].getAttribute('id')) ==  (i+1) && i == 15){
+        
+            tag.insertAdjacentHTML('afterbegin', `<p>ПОБЕДА</p>`) 
+          }else{
+            break
+          
+        }
 
       }
-      console.log(tagEl) 
+      console.log(elDiv) 
     }
 }
 // src/main.ts
