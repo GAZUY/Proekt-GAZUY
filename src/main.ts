@@ -883,10 +883,9 @@ elDiv.push(document.createElement ('div'))
 // shuffleArray(elDiv)
 function shuffleArray (indexD0:number){
   let whereToMove
-  
+for (let i = 0; i <9; i++){  
   do {
-      
-let round = []
+  let round = []
 if (indexD0 + 4 <= 15 && 0 <= indexD0 + 4 ) round.push(indexD0 + 4)
 if (indexD0 - 4 <= 15 && 0 <= indexD0 - 4 ) round.push(indexD0 - 4)
 if (indexD0 + 1 <= 15 && 0 <= indexD0 + 1 ) round.push(indexD0 + 1)
@@ -899,9 +898,10 @@ let atr1 = elDiv[indexD0].getAttribute('id')
       
 } while (indexD0 != 15);
 }
+}
 
 elDiv.map((el) => tag.appendChild(el))
-let d0 = document.querySelector('#D0') as HTMLDivElement
+ 
 
 // function shuffleArray (indexD0:number){
 //   let whereToMove
@@ -921,21 +921,25 @@ let d0 = document.querySelector('#D0') as HTMLDivElement
 //         i ++
 // } while (indexD0 != 15);
 // }
+let d0 = document.querySelector('#D0') as HTMLDivElement
 shuffleArray(elDiv.indexOf(d0))
 console.log(elDiv.indexOf(d0))
 tag.onclick = function(event){
   let target = event.target as any
     if (target.tagName == 'DIV'){
        let d0 = document.querySelector('#D0') as HTMLDivElement
-      console.log(elDiv.indexOf(d0))
+      // console.log(elDiv.indexOf(d0))
       if (Math.max(elDiv.indexOf(d0), elDiv.indexOf(target)) - Math.min(elDiv.indexOf(d0), elDiv.indexOf(target)) == 1 || Math.max(elDiv.indexOf(d0), elDiv.indexOf(target)) - Math.min(elDiv.indexOf(d0), elDiv.indexOf(target)) == 4){
         let atr = elDiv[elDiv.indexOf(d0)].getAttribute('id')
         elDiv[elDiv.indexOf(d0)].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
         elDiv[elDiv.indexOf(target)].setAttribute('id', `${atr}`)
-       
-        console.log(elDiv[elDiv.indexOf(target)])
       }
-      console.log(elDiv[elDiv.indexOf(target)]) 
+      const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
+      for (let i = 0; i< tagEl.length; i ++){
+        if(parseFloat(tagEl[i].getAttribute('id'))-1 == i)
+
+      }
+      console.log(tagEl) 
     }
 }
 // src/main.ts
