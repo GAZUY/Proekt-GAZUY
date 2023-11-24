@@ -932,6 +932,7 @@ demo.onclick = function(event){
     let a = demoArr[demoArr.length - 1]
   for (let i = demoArr.length - 2; i >= 0; i-- ){
     // if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-2],1)
+    (function(ind) {
     setTimeout(function() {
     console.log ('a'+a)
     console.log ('demoArr[i]'+demoArr[i])
@@ -939,7 +940,8 @@ demo.onclick = function(event){
         elDiv[demoArr[i]].setAttribute('id', `${elDiv[a].getAttribute('id')}`)
         elDiv[a].setAttribute('id', `${atr}`)
         a = demoArr[i]
-    }, 5000 )   
+    },  1000 + (1000 * ind))
+  })(i)   
     
   }}
 }
