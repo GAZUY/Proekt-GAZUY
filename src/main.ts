@@ -725,17 +725,19 @@ ulLi.forEach(el => {
 */
 let menu = document.querySelector('.Modul_3_4_Week_12-2') as HTMLDivElement
 let lists = menu.querySelectorAll('li')
-// let span = document.createElement('span')
-// lists.forEach(el => {
-//   el.prepend(span)
-//   // span.append(span.nextSibling)
-// })
+let span = document.createElement('span')
+for (let li of lists) {
+  let span = document.createElement('span')
+  li.prepend(span)
+  if(span.nextSibling )
+  span.append(span.nextSibling)
+}
 menu.onclick = function (event) {
   const target = event.target as HTMLElement
-  // @ts-ignore
-  let childrenContainer = target.parentNode.querySelector('ul')
+  if (target.parentNode != null)
+ { let childrenContainer = target.parentNode.querySelector('ul')
   if (childrenContainer) childrenContainer.classList.toggle('hide')
-      
+      }
 }
 /*
 Задание 3
@@ -790,10 +792,29 @@ Ctrl + S, вместо textarea появляет div с уже измененн�
 таний клавиш.
 */
 let workingWithText = document.querySelector('.Modul_3_4_Week_12-3') as HTMLDivElement
-workingWithText.addEventListener('keydown', function(event) {
-  if (event.code === "KeyE" && event.ctrlKey) {
+let DivText = document.querySelector('#text') as HTMLDivElement
+document.addEventListener('keydown', function(event) {
+  if ((event.code === "KeyE" || event.code === "KeyS") && event.ctrlKey) {
     event.preventDefault()
     return false
+  }
+})
+document.addEventListener('keydown', function(event) {
+  if (event.code === "KeyE" && event.ctrlKey) {
+    let textarea= document.createElement('textarea')
+    DivText.prepend(textarea)
+    if(textarea.nextSibling )
+    textarea.append(textarea.nextSibling)
+  }
+})
+document.addEventListener('keydown', function(event) {
+  if (event.code === "KeyS" && event.ctrlKey) {
+    let DivTextTextarea = document.querySelector('#text textarea') as HTMLAreaElement
+    DivText.prepend(DivTextTextarea).remove()
+    if(DivTextTextarea.nextSibling )
+    DivTextTextarea.append(DivTextTextarea.nextSibling).remove()
+   
+  
   }
 })
 /*
@@ -926,26 +947,28 @@ tag.onclick = function(event){
      // console.log(demoArr)  
     }
 }
-demo.onclick = function(event){
-  let target = event.target as HTMLButtonElement
-  if (target){
-    let a = demoArr[demoArr.length - 1]
-  for (let i = demoArr.length - 2; i >= 0; i-- ){
-    // if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-2],1)
-    (function(ind) {
-    setTimeout(function() {
-    console.log ('a'+a)
-    console.log ('demoArr[i]'+demoArr[i])
-    let atr = elDiv[demoArr[i]].getAttribute('id')
-        elDiv[demoArr[i]].setAttribute('id', `${elDiv[a].getAttribute('id')}`)
-        elDiv[a].setAttribute('id', `${atr}`)
-        a = demoArr[i]
-    },  1000 + (1000 * ind))
-  })(i)   
+// =============================================================
+// demo.onclick = function(event){
+//   let target = event.target as HTMLButtonElement
+//   if (target){
+//     let a = demoArr[demoArr.length - 1]
+//   for (let i = demoArr.length - 2; i >= 0; i-- ){
+//      if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-2],1)
+//     (function(i) {
+//     setTimeout(function() {
+//     console.log ('a'+a)
+//     console.log ('demoArr[i]'+demoArr[i])
+//     let atr = elDiv[demoArr[i]].getAttribute('id')
+//         elDiv[demoArr[i]].setAttribute('id', `${elDiv[a].getAttribute('id')}`)
+//         elDiv[a].setAttribute('id', `${atr}`)
+//         a = demoArr[i]
+//     },  1000 + (1000 * i))
+//   })(i)   
     
-  }}
-}
-console.log(demoArr) 
+//   }}
+// }
+// console.log(demoArr)
+// ========================================================================= 
 
 
 // const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
@@ -1037,4 +1060,7 @@ console.log(demoArr)
 
 
 // console.log(elDiv)
+
+
+
 

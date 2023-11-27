@@ -225,17 +225,13 @@ input[type="radio"]:checked {
 
 .Modul_3_4_Week_12-2 li {
  color: chocolate;
-
+ cursor: pointer;
  }
-
-
- .hide {
-   display: none;
- }
-
- .boldFont {
+ .Modul_3_4_Week_12-2 span:hover{
   font-weight: bolder;
-
+ }
+.hide {
+   display: none;
  }
  .Modul_3_4_Week_12-3 li:hover {
   cursor: pointer;
