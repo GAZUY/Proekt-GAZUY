@@ -801,18 +801,26 @@ document.addEventListener('keydown', function(event) {
 })
 document.addEventListener('keydown', function(event) {
   if (event.code === "KeyE" && event.ctrlKey) {
-    let textarea= document.createElement('textarea')
-    DivText.prepend(textarea)
-    if(textarea.nextSibling )
-    textarea.append(textarea.nextSibling)
+    if (DivText.firstElementChild?.tagName != 'TEXTAREA' ){
+    // DivText.querySelectorAll("*").forEach(el => {
+    //   if (el.tagName.includes('TEXTAREA') === false ){
+        let textarea= document.createElement('textarea')
+        DivText.prepend(textarea)
+        if(textarea.nextSibling )
+        textarea.append(textarea.nextSibling)
+       }
+    // });
+  
   }
 })
 document.addEventListener('keydown', function(event) {
   if (event.code === "KeyS" && event.ctrlKey) {
-    let DivTextTextarea = document.querySelector('#text textarea') as HTMLAreaElement
-    DivText.prepend(DivTextTextarea).remove()
-    if(DivTextTextarea.nextSibling )
-    DivTextTextarea.append(DivTextTextarea.nextSibling).remove()
+    let DivTextTextarea = document.querySelector('#text textarea') as HTMLTextAreaElement
+    let q = DivTextTextarea.value
+ 
+    DivTextTextarea.remove()
+    if (q)
+    DivText.prepend(q)
    
   
   }
@@ -830,16 +838,17 @@ if (sortableTable != null || sortableTable != undefined) {
   sortableTable.onclick = function(event) {
     let target = event.target as any
     if (target.tagName == 'TH') {
-    let th = event.target as HTMLElement
-    let asdf = th.innerHTML
-    // @ts-ignore
-    empl.sort((a,b)=>a.age - (b.age))
-    console.log(th.innerHTML )
-    console.log(empl)
-    
+      let th = event.target as HTMLElement
+      let asdf = th.innerHTML
+      //console.log(asdf)
+      // @ts-ignore
+      empl.sort((a,b)=>a.asdf - (b.asdf))
+      const table = new EmpTable(empl).getHtml()
+      // console.log(table)
+      const StyledTable = new StyledEmpTable(empl)
+      StyledTable.getHtml() 
+    }
   }
-
-}
 }
 /*
 Задание 6
@@ -1061,6 +1070,20 @@ tag.onclick = function(event){
 
 // console.log(elDiv)
 
+let checkTheInput = document.querySelector('.Modul_3_4_Week_11_1 input') as HTMLInputElement
+checkTheInput.onkeydown = function(event){
+  let target = event.target
+if (checkTheInput == target) {
+  console.log(checkTheInput.value)
+  let Week_11_1 = checkTheInput.value.split('')
+  console.log(Week_11_1)
+  for (let i = 0; i < 10;i ++){
+    Week_11_1.slice(Week_11_1.indexOf(''+i,1))
+  }
+  checkTheInput.innerText == ''
+  checkTheInput.innerText == Week_11_1.join('')
+}
+}
 
 
 
