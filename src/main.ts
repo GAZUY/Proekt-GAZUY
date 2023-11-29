@@ -1078,10 +1078,11 @@ if (checkTheInput == target) {
   let Week_11_1 = checkTheInput.value.split('')
   console.log(Week_11_1)
   for (let i = 0; i < 10;i ++){
-    Week_11_1.slice(Week_11_1.indexOf(''+i,1))
+    Week_11_1.slice(Week_11_1.lastIndexOf(''+i),1)
+    checkTheInput.value = ''
+    checkTheInput.value == Week_11_1.join('')
   }
-  checkTheInput.innerText == ''
-  checkTheInput.innerText == Week_11_1.join('')
+
 }
 }
 
