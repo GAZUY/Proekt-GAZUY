@@ -956,6 +956,24 @@ tag.onclick = function(event){
      // console.log(demoArr)  
     }
 }
+
+demo.onclick = async function(event){
+  let target = event.target as HTMLButtonElement
+  if (target) {
+    let a = demoArr[demoArr.length - 1]
+    for (let i = demoArr.length - 2; i >= 0; i-- ){
+      // if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-1],2)      
+      await wait(200)
+      console.log ('a'+a)
+      console.log ('demoArr[i]'+demoArr[i])
+      let atr = elDiv[demoArr[i]].getAttribute('id')
+      elDiv[demoArr[i]].setAttribute('id', `${elDiv[a].getAttribute('id')}`)
+      elDiv[a].setAttribute('id', `${atr}`)
+      a = demoArr[i]
+      
+    }
+  }
+}
 // =============================================================
 // demo.onclick = function(event){
 //   let target = event.target as HTMLButtonElement
