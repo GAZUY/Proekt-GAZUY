@@ -249,13 +249,14 @@ input[type="radio"]:checked {
 #TAG {
   box-sizing: border-box;
   line-height: 0;
-  width: 203px;
-  height: 203px;
+  width: 194px;
+  height: 194px;
   border: solid #803a00 5px;
   background-color: #ecd8c8;
-
+  
 }
 #D1, #D2, #D3, #D4, #D5, #D6, #D7, #D8, #D9, #D10, #D11, #D12, #D13, #D14, #D15 {
+  box-sizing: border-box;
   display: inline-block;
   width: 46px;
   height: 46px;
@@ -314,6 +315,7 @@ input[type="radio"]:checked {
 }
 
 #D0 {
+  box-sizing: border-box;
   display: inline-block;
   width: 46px;
   height: 46px;
