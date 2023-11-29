@@ -842,7 +842,7 @@ if (sortableTable != null || sortableTable != undefined) {
       let asdf = th.innerHTML
       //console.log(asdf)
       // @ts-ignore
-      empl.sort((a,b)=>a.asdf - (b.asdf))
+      empl.sort((a,b)=>a[asdf] - b[asdf])
       const table = new EmpTable(empl).getHtml()
       // console.log(table)
       const StyledTable = new StyledEmpTable(empl)
@@ -1089,19 +1089,19 @@ demo.onclick = async function(event){
 // console.log(elDiv)
 
 let checkTheInput = document.querySelector('.Modul_3_4_Week_11_1 input') as HTMLInputElement
-checkTheInput.onkeydown = function(event){
-  let target = event.target
-if (checkTheInput == target) {
-  console.log(checkTheInput.value)
-  let Week_11_1 = checkTheInput.value.split('')
+checkTheInput.oninput = function(event){
+  
+  let target = event.target as HTMLInputElement
+  console.log(target.value)
+  let Week_11_1 = target.value.split('')
   console.log(Week_11_1)
-  for (let i = 0; i < 10;i ++){
-    Week_11_1.slice(Week_11_1.lastIndexOf(''+i),1)
-    checkTheInput.value = ''
-    checkTheInput.value == Week_11_1.join('')
+  for (let i = 0; i < 10;i++){
+    const index = Week_11_1.lastIndexOf(''+i)
+    if (index!=-1) {
+      Week_11_1.splice(Week_11_1.lastIndexOf(''+i),1)
+      target.value = Week_11_1.join('')
+    }
   }
-
-}
 }
 
 
