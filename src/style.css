@@ -336,3 +336,15 @@ textarea {
   width: 90%;
   height: 30px;
 }
+.JS_DZ_Module_7_8_Week_16{
+  font-size: xx-large;
+  background-color: rgb(190, 170, 201);
+  text-align: center;
+  padding: 30px; 
+}
+#type, #title {
+  font-size: x-large;
+  width: 300px;
+  height: 50px;
+  margin-left: 100px;
+}

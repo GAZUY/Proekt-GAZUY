@@ -1103,6 +1103,21 @@ checkTheInput.oninput = function(event){
     }
   }
 }
+//================================================================
+// ПОИСК ФИЛЬМОВ
+let title = document.querySelector('#title') as HTMLInputElement
 
+let type = document.querySelector('#type') as HTMLSelectElement
 
+let search = document.querySelector('#search') as HTMLButtonElement
+search.onclick = function(event) {
+  if (title) console.log (title.value)
+  if (type) console.log (type.value)
+
+}
+
+function wait(arg0: number) {
+  throw new Error('Function not implemented.')
+}
+//=================================================================
 
