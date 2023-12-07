@@ -43,3 +43,20 @@
     font-size: x-large;
     height: 3dvh
   } */
+
+  form {
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: antiquewhite;
+  }
+  .flex {
+    display: flex;
+    gap: 40px;
+  }
+  [type=submit] {
+    display: block;
+    width: 100%;
+  }
