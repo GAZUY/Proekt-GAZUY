@@ -962,6 +962,7 @@ tag.onclick = function(event){
       console.log(demoArr)  
     }
 }
+console.log(demoArr)
 
 
 // =============================================================
@@ -1005,13 +1006,17 @@ const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
       console.log(elDiv)
 
 
+      function wait(ms: number) {
+        return new Promise((resolve)=>{setTimeout(()=>resolve(true),ms)})
+      }
+
       demo.onclick = async function(event){
         let target = event.target as HTMLButtonElement
         if (target) {
           let a = demoArr[demoArr.length - 1]
           for (let i = demoArr.length - 2; i >= 0; i-- ){
-            //  if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-1],2)      
-            await (200) 
+              //if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-1],2)      
+            await wait(300) 
             console.log ('a'+a)
             console.log ('demoArr[i]'+demoArr[i])
             let atr = elDiv[demoArr[i]].getAttribute('id')
@@ -1085,9 +1090,7 @@ checkTheInput.oninput = function(event){
   }
 }
 
-function wait(arg0: number) {
-  throw new Error('Function not implemented.')
-}
+
 // //================================================================
 // // ПОИСК ФИЛЬМОВ
 // let title = document.querySelector('#title') as HTMLInputElement
