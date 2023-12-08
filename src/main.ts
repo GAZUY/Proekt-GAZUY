@@ -882,7 +882,8 @@ if (sortableTable != null || sortableTable != undefined) {
 //   })
 // })
 // ПЯТНАШКИ
-// 
+// ===================================================
+// Обращаемся к элементам, создаем массив DIVов эаполняем через цикл id.
 const reset = document.querySelector('#reset') as HTMLButtonElement
 const demo = document.querySelector('#demo') as HTMLButtonElement
 const tag = document.querySelector('#TAG') as HTMLDivElement
@@ -895,6 +896,9 @@ elDiv.push(document.createElement ('div'))
   elDiv[15].setAttribute('id', `D${0}`)
 
   let demoArr: number[] = []
+  //=======================================================
+  // перемешиваем массив перемещая id с элемента на элемент в случайном порядкеЭ но с условием перемещения (верхЭ низ, право, лево). заполняем родительский DIV элементами массива. Записываем ходы в массив.
+
 
 function shuffleArray (indexD0:number){
   let whereToMove 
@@ -929,6 +933,8 @@ function shuffleArray (indexD0:number){
   demoArr.unshift(15)
 }
  elDiv.map((el) => tag.appendChild(el))
+ //======================================================================
+//  прописываем логику игры (обмен ID). Добавляем все ходы в массив.
  
 
 
@@ -953,27 +959,11 @@ tag.onclick = function(event){
         }
        }
       
-     // console.log(demoArr)  
+      console.log(demoArr)  
     }
 }
 
-demo.onclick = async function(event){
-  let target = event.target as HTMLButtonElement
-  if (target) {
-    let a = demoArr[demoArr.length - 1]
-    for (let i = demoArr.length - 2; i >= 0; i-- ){
-      // if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-1],2)      
-      await wait(200)
-      console.log ('a'+a)
-      console.log ('demoArr[i]'+demoArr[i])
-      let atr = elDiv[demoArr[i]].getAttribute('id')
-      elDiv[demoArr[i]].setAttribute('id', `${elDiv[a].getAttribute('id')}`)
-      elDiv[a].setAttribute('id', `${atr}`)
-      a = demoArr[i]
-      
-    }
-  }
-}
+
 // =============================================================
 // demo.onclick = function(event){
 //   let target = event.target as HTMLButtonElement
@@ -998,68 +988,59 @@ demo.onclick = async function(event){
 // ========================================================================= 
 
 
-// const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
-      // for (let i = 0; i< 16; i ++){
-        // console.log(elDiv[i].getAttribute('id'))
-        // console.log("D"+ (i+1))
+const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
+      for (let i = 0; i< 16; i ++){
+        console.log(elDiv[i].getAttribute('id'))
+        console.log("D"+ (i+1))
         
-        // if(parseInt(elDiv[i].getAttribute('id')) ==  (i+1) && i == 15){
+        if(parseInt(String(elDiv[i].getAttribute('id'))) ==  (i+1) && i == 15){
         
-        //     tag.insertAdjacentHTML('afterbegin', `<p>ПОБЕДА</p>`) 
-        //   }else{
-        //     break
+            tag.insertAdjacentHTML('afterbegin', `<p>ПОБЕДА</p>`) 
+          }else{
+            break
           
-        // }
+        }
 
-      // }
-      // console.log(elDiv)
-
-// function shuffleArray (indexD0:number){
-//   let whereToMove
-//   let i = 0
-//   do {
-    
-// let round = []
-// if (indexD0 + 4 <= 15 && 0 <= indexD0 + 4 ) round.push(indexD0 + 4)
-// if (indexD0 - 4 <= 15 && 0 <= indexD0 - 4 ) round.push(indexD0 - 4)
-// if (indexD0 + 1 <= 15 && 0 <= indexD0 + 1 ) round.push(indexD0 + 1)
-// if (indexD0 - 1 <= 15 && 0 <= indexD0 - 1 ) round.push(indexD0 - 1)
-// whereToMove = round[Math.floor(Math.random() * round.length)]
-// let atr1 = elDiv[indexD0].getAttribute('id')
-//         elDiv[indexD0].setAttribute('id', `${elDiv[whereToMove].getAttribute('id')}`)
-//         elDiv[whereToMove].setAttribute('id', `${atr1}`)
-//         indexD0 = whereToMove
-//         i ++
-// } while (indexD0 != 15);
-// }
+      }
+      console.log(elDiv)
 
 
- // if (i == 14){
-  //   i = 0
-  //   elDiv.push(document.createElement ('div'))
-  //   elDiv[i].setAttribute('id', `D${i}`)
-  // elDiv[i].setAttribute('data', `${i}`)
-  //  }
-  // elDiv[i].insertAdjacentHTML('afterbegin', `<p>${i}</p>`) 
+      demo.onclick = async function(event){
+        let target = event.target as HTMLButtonElement
+        if (target) {
+          let a = demoArr[demoArr.length - 1]
+          for (let i = demoArr.length - 2; i >= 0; i-- ){
+            //  if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-1],2)      
+            await (200) 
+            console.log ('a'+a)
+            console.log ('demoArr[i]'+demoArr[i])
+            let atr = elDiv[demoArr[i]].getAttribute('id')
+            elDiv[demoArr[i]].setAttribute('id', `${elDiv[a].getAttribute('id')}`)
+            elDiv[a].setAttribute('id', `${atr}`)
+            a = demoArr[i]
+            
+          }
+        }
+      }
 
 
 
  
-// }
-// shuffleArray(elDiv)
 
 
 
-// src/main.ts
+
+
+// // src/main.ts
 // (let i = Math.min(targetIndex, lastActiveIndex); i <= Math.max(targetIndex, lastActiveIndex); i++)
- // let atr = elDiv[elDiv.indexOf(target)-1].getAttribute('id')
-        // elDiv[elDiv.indexOf(target)-1].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
-        // elDiv[elDiv.indexOf(target)].setAttribute('id', `${atr}`)
- // const temp = elDiv[elDiv.indexOf(target)-1]
-        // elDiv[elDiv.indexOf(target)-1] = elDiv[elDiv.indexOf(target)]
-        // elDiv[elDiv.indexOf(target)] = temp
-        // elDiv.map((el) => tag.appendChild(el))
-//elem.getAttribute(name)
+//  let atr = elDiv[elDiv.indexOf(target)-1].getAttribute('id')
+//         elDiv[elDiv.indexOf(target)-1].setAttribute('id', `${elDiv[elDiv.indexOf(target)].getAttribute('id')}`)
+//         elDiv[elDiv.indexOf(target)].setAttribute('id', `${atr}`)
+//  const temp = elDiv[elDiv.indexOf(target)-1]
+//         elDiv[elDiv.indexOf(target)-1] = elDiv[elDiv.indexOf(target)]
+//         elDiv[elDiv.indexOf(target)] = temp
+//         elDiv.map((el) => tag.appendChild(el))
+// elem.getAttribute(name)
 // console.log(elDiv)
 // const temp = elDiv[0];
 // elDiv[0] = elDiv[1];
@@ -1103,21 +1084,25 @@ checkTheInput.oninput = function(event){
     }
   }
 }
-//================================================================
-// ПОИСК ФИЛЬМОВ
-let title = document.querySelector('#title') as HTMLInputElement
-
-let type = document.querySelector('#type') as HTMLSelectElement
-
-let search = document.querySelector('#search') as HTMLButtonElement
-search.onclick = function(event) {
-  if (title) console.log (title.value)
-  if (type) console.log (type.value)
-
-}
 
 function wait(arg0: number) {
   throw new Error('Function not implemented.')
 }
+// //================================================================
+// // ПОИСК ФИЛЬМОВ
+// let title = document.querySelector('#title') as HTMLInputElement
+
+// let type = document.querySelector('#type') as HTMLSelectElement
+
+// let search = document.querySelector('#search') as HTMLButtonElement
+// search.onclick = function(event) {
+//   if (title) console.log (title.value)
+//   if (type) console.log (type.value)
+
+// }
+
+// function wait(arg0: number) {
+//   throw new Error('Function not implemented.')
+// }
 //=================================================================
 
