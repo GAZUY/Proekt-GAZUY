@@ -962,7 +962,7 @@ tag.onclick = function(event){
       console.log(demoArr)  
     }
 }
-console.log(demoArr)
+console.log('demoArr'+demoArr)
 
 
 // =============================================================
