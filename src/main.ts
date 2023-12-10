@@ -959,10 +959,12 @@ tag.onclick = function(event){
         }
        }
       
-      console.log(demoArr)  
+        
     }
 }
-console.log('demoArr'+demoArr)
+
+
+
 
 
 // =============================================================
@@ -991,9 +993,6 @@ console.log('demoArr'+demoArr)
 
 const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
       for (let i = 0; i< 16; i ++){
-        console.log(elDiv[i].getAttribute('id'))
-        console.log("D"+ (i+1))
-        
         if(parseInt(String(elDiv[i].getAttribute('id'))) ==  (i+1) && i == 15){
         
             tag.insertAdjacentHTML('afterbegin', `<p>ПОБЕДА</p>`) 
@@ -1003,7 +1002,6 @@ const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
         }
 
       }
-      console.log(elDiv)
 
 
       function wait(ms: number) {
@@ -1013,12 +1011,19 @@ const tagEl = document.querySelectorAll('#TAG DIV') as NodeListOf<Element>
       demo.onclick = async function(event){
         let target = event.target as HTMLButtonElement
         if (target) {
+          for (let i =0; i < demoArr.length-1; i++){
+            if (demoArr[i] == demoArr[i+2]){
+              demoArr.splice(i+1,2)
+            }
+          }
+          for (let i =0; i < demoArr.length-1; i++){
+            if (demoArr[i] == demoArr[i+2]){
+              demoArr.splice(i+1,2)
+            }
+          }
           let a = demoArr[demoArr.length - 1]
-          for (let i = demoArr.length - 2; i >= 0; i-- ){
-              //if (demoArr[i] == demoArr[i-2]) demoArr.splice(demoArr[i-1],2)      
-            await wait(300) 
-            console.log ('a'+a)
-            console.log ('demoArr[i]'+demoArr[i])
+          for (let i = demoArr.length - 2; i >= 0; i-- ){      
+            await wait(400) 
             let atr = elDiv[demoArr[i]].getAttribute('id')
             elDiv[demoArr[i]].setAttribute('id', `${elDiv[a].getAttribute('id')}`)
             elDiv[a].setAttribute('id', `${atr}`)
