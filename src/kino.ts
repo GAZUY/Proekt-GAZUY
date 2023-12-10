@@ -22,18 +22,29 @@ const type = form.querySelector('#type') as HTMLSelectElement
 const app = document.getElementById('app')
 const paginationDiv = document.getElementById('pagination')
 
-form.addEventListener('submit', async (e)=>{
-  e.preventDefault()
-  if (!title.value) return
-  try {
-    const resp = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&s=${title.value}&type=${type.value}`)
-    const data = await resp.json()
-    renderPagination(data.totalResults, 1)
-    render(data.Search)
-  } catch(e) {
-    console.log(e)
-  }
-})
+try {
+  const resp = await fetch(`https://api.service-kp.com/oauth2/device?grant_type=device_code&client_id=myclient&client_secret=mysecret`)
+  const data = await resp.json()
+  console.log(data)
+  renderPagination(data.totalResults, 1)
+  render(data.Search)
+} catch(e) {
+  console.log(e)
+}
+
+// form.addEventListener('submit', async (e)=>{
+//   e.preventDefault()
+//   if (!title.value) return
+//   try {
+//     const resp = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&s=${title.value}&type=${type.value}`)
+//     const data = await resp.json()
+//     console.log(data)
+//     renderPagination(data.totalResults, 1)
+//     render(data.Search)
+//   } catch(e) {
+//     console.log(e)
+//   }
+// })
 
 // Poster:"https://m.media-amazon.com/images/M/MV5BN2ZmZGM3YTktOTk0Ni00Mjc4LThjYzEtYmExZGJiZjBlOTg3XkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_SX300.jpg"
 // Title
