@@ -2,19 +2,19 @@
 #TAG {
     box-sizing: border-box;
     line-height: 0;
-    width: 194px;
-    height: 194px;
-    border: solid #803a00 5px;
+    width: 411px;
+    height: 411px;
+    border: solid #803a00 5.5px;
     background-color: #ecd8c8;
     
   }
   #D1, #D2, #D3, #D4, #D5, #D6, #D7, #D8, #D9, #D10, #D11, #D12, #D13, #D14, #D15 {
     box-sizing: border-box;
     display: inline-block;
-    width: 46px;
-    height: 46px;
+    width: 100px;
+    height: 100px;
     text-align: center;
-    border: solid #cd6165 2px;
+    border: solid #cd6165 4px;
     background-color: #acd7bc;
     background-position: center;
     -webkit-background-size: cover;
@@ -70,8 +70,8 @@
   #D0 {
     box-sizing: border-box;
     display: inline-block;
-    width: 46px;
-    height: 46px;
+    width: 100px;
+    height: 100px;
     border: solid #cd6165 2px;
     background-color: #ecd8c8;
   }
