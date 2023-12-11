@@ -1,6 +1,6 @@
 
 
-/* body {
+body {
     position: relative;
     display: flex;
     width: 100%;
@@ -42,7 +42,7 @@
   .pages>button {
     font-size: x-large;
     height: 3dvh
-  } */
+  }
 
   form {
     max-width: 300px;
