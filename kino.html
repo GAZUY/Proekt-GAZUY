@@ -26,28 +26,31 @@
 </head>
 <body>
   <a href="index.html">Назад</a>
+  
     <div class="JS_DZ_Module_7_8_Week_16">
         <form>
           <h2>Поиск:</h2>
           <label>Оглавление:<input id="title"></label><br>
           <label for="type">Тип фильма:</label>
           <select name="type" id="type">
-            <option value="movie,">Фильм</option>
-            <option value="series,">Сериал</option>
+            <option value="movie">Фильм</option>
+            <option value="series">Сериал</option>
             <option value="episode">Эпизод</option>
             </select><br>
             <input id="search" type="submit" value="Поиск!">
         </form>
-      </div>
+    </div>
       <div class="showingEverything">
-        <div class="pages">
-          <button>&pr;&pr;&pr;</button>
-          <button>&pr;-</button>
-          <button><span>12</span></button>
-          <button>-&sc;</button>
-          <button>&sc;&sc;&sc;</button>
-        </div>
       </div>
+      <div class="pages">
+        <button>&pr;&pr;&pr;</button>
+        <button>&pr;-</button>
+        <button><span>12</span></button>
+        <button>-&sc;</button>
+        <button>&sc;&sc;&sc;</button>
+      </div>
+    
+      <!-- <div id="modal" class="modal"></div> -->
       <script type="module" src="/src/kino.ts"></script>   
       <!-- <form>
         <div class="flex">
@@ -72,6 +75,6 @@
       <div id="app"></div>
       <div id="pagination"></div> -->
       <!-- <script type="module" src="/src/kino.ts"></script> -->
-
+    
 </body>
 </html>

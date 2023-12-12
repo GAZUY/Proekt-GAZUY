@@ -19,7 +19,7 @@ import "./kino.css"
 const form = document.forms[0]
 const title = form.querySelector('#title') as HTMLInputElement
 const type = form.querySelector('#type') as HTMLSelectElement
-const app =  document.getElementById('app')
+const showingEverything =  document.querySelector('.showingEverything') as HTMLDivElement
 const paginationDiv = document.getElementById('pagination')
 
 // try {
@@ -38,13 +38,29 @@ form.addEventListener('submit', async (e)=>{
   try {
     const resp = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&s=${title.value}&type=${type.value}`)
     const data = await resp.json()
-    console.log(data)
     // renderPagination(data.totalResults, 1)
-    // render(data.Search)
+     render(data.Search)
   } catch(e) {
-    console.log(e)
+    //console.log(e)
   }
 })
+
+
+showingEverything.onclick = async function (event) {
+  const target = event.target as HTMLElement
+  if (target.tagName == 'BUTTON'){
+    let a = target.getAttribute('id')
+    console.log(a)
+    let descriptionDiv = document.querySelector('#D'+a)as HTMLDivElement
+    let description = ''
+    const resp1 = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&i=${target.getAttribute('id')}`)
+    const data1 = await resp1.json()
+    description += `<p>${data1.Plot}</p>`
+    if (descriptionDiv) descriptionDiv.innerHTML = description
+    // descriptionDiv.classList.toggle('description')
+    console.log(data1.Plot) 
+  }
+}
 
 // Poster:"https://m.media-amazon.com/images/M/MV5BN2ZmZGM3YTktOTk0Ni00Mjc4LThjYzEtYmExZGJiZjBlOTg3XkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_SX300.jpg"
 // Title
@@ -66,13 +82,17 @@ function render(arr:any[]) {
     films += `<div class="flex">
 <img src="${el.Poster}">    
 <div>
-<p>${el.Title}, ${el.Year}</p> 
-<p>${el.Type} ${el.imdbID}</p> 
-</div>    
+<p>Название фильма: <span>${el.Title}</span></p> 
+<p>Год выхода: <span>${el.Year}</span></p> 
+<p>Тип фильма: <span>${el.Type}</span></p> 
+<p>ID файла: <span>${el.imdbID}</span></p> 
+<button id="${el.imdbID}">Подробно о фильме</button>
+</div>
+<div class="description" id = D${el.imdbID}></div>    
 </div>`
   }
-  if (app)
-  app.innerHTML = films
+  if (showingEverything)
+  showingEverything.innerHTML = films
 }
 
 function renderPagination(total: number, page: number) {

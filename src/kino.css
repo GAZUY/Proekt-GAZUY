@@ -8,9 +8,22 @@ body {
     min-height: 100%;
     background-color: rgb(193, 212, 157);
 }
+a {
+  position: fixed;
+  top: 0;
+  right: 0vw; 
+  font-size: x-large;
+  background-color: aliceblue;
+}
+button:hover, #search:hover {
+  color: blue;
+  -webkit-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  transform: scale(1.3);
+  background-color: rgb(192, 154, 226);
+}
 .JS_DZ_Module_7_8_Week_16{
-    margin: auto;
-    margin-right: 0vh;
+  position: fixed;
     width: 20vw;
     height: auto;
     min-height: 100vh;
@@ -27,8 +40,8 @@ body {
     display: block;
     background-color: rgb(105, 94, 110);
     margin: auto;
-    margin-left: 0vh;
-    width: 70vw;
+    margin-right: 0vh;
+    width: 78vw;
     height: auto;
     min-height: 100vh;
     text-align: center;
@@ -44,19 +57,23 @@ body {
     height: 3dvh
   }
 
-  form {
-    max-width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: antiquewhite;
-  }
-  .flex {
-    display: flex;
-    gap: 40px;
-  }
-  [type=submit] {
-    display: block;
-    width: 100%;
-  }
+ .flex {
+  display: flex;
+  font-size: larger;
+  background-color: rgb(170, 233, 233);
+  margin: 5px;
+ }
+ .flex img {
+  width: 150px;
+ }
+ .flex span {
+  color: brown;
+  font-weight: bold;
+ }
+ .flex div {
+  text-align: left;
+  margin-left: 20px;
+ }
+ /* .description {
+  display: none; */
+ /* } */
