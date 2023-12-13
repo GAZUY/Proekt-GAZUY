@@ -65,6 +65,7 @@ button:hover, #search:hover {
  }
  .flex img {
   width: 150px;
+  height: 250px;
  }
  .flex span {
   color: brown;
@@ -73,7 +74,20 @@ button:hover, #search:hover {
  .flex div {
   text-align: left;
   margin-left: 20px;
+  max-height: 222px;
+  max-width: 400px;
+  
  }
- /* .description {
-  display: none; */
- /* } */
+ .description {
+  display: none; 
+  }
+  .X {
+    display: block;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    margin-left: 350px;
+    margin-top: 5px;
+  }

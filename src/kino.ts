@@ -20,7 +20,7 @@ const form = document.forms[0]
 const title = form.querySelector('#title') as HTMLInputElement
 const type = form.querySelector('#type') as HTMLSelectElement
 const showingEverything =  document.querySelector('.showingEverything') as HTMLDivElement
-const paginationDiv = document.getElementById('pagination')
+const paginationDiv = document.querySelector('.pages')as HTMLDivElement
 
 // try {
 //   const resp = await fetch(`https://api.service-kp.com/oauth2/device?grant_type=device_code&client_id=myclient&client_secret=mysecret`)
@@ -48,19 +48,25 @@ form.addEventListener('submit', async (e)=>{
 
 showingEverything.onclick = async function (event) {
   const target = event.target as HTMLElement
+  let descriptionDiv: HTMLDivElement
   if (target.tagName == 'BUTTON'){
     let a = target.getAttribute('id')
-    console.log(a)
-    let descriptionDiv = document.querySelector('#D'+a)as HTMLDivElement
+    descriptionDiv = document.querySelector('#D'+a)as HTMLDivElement
     let description = ''
+    if (descriptionDiv.lastChild != null) descriptionDiv.lastChild.remove()
     const resp1 = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&i=${target.getAttribute('id')}`)
     const data1 = await resp1.json()
-    description += `<p>${data1.Plot}</p>`
-    if (descriptionDiv) descriptionDiv.innerHTML = description
-    // descriptionDiv.classList.toggle('description')
-    console.log(data1.Plot) 
+    description += `${data1.Plot}`
+    descriptionDiv.append(description)
+    descriptionDiv.classList.toggle('description') 
   }
 }
+
+// let x = document.querySelector('.X')as HTMLDivElement
+// x?.addEventListener ('click', function (){
+//   console.log(x.parentNode?.parentNode)
+//   x.parentNode?.classList.toggle('description')
+// } )
 
 // Poster:"https://m.media-amazon.com/images/M/MV5BN2ZmZGM3YTktOTk0Ni00Mjc4LThjYzEtYmExZGJiZjBlOTg3XkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_SX300.jpg"
 // Title
@@ -80,40 +86,52 @@ function render(arr:any[]) {
   let films = ''
   for (let el of arr) {
     films += `<div class="flex">
-<img src="${el.Poster}">    
-<div>
-<p>Название фильма: <span>${el.Title}</span></p> 
-<p>Год выхода: <span>${el.Year}</span></p> 
-<p>Тип фильма: <span>${el.Type}</span></p> 
-<p>ID файла: <span>${el.imdbID}</span></p> 
-<button id="${el.imdbID}">Подробно о фильме</button>
-</div>
-<div class="description" id = D${el.imdbID}></div>    
-</div>`
+                <img src="${el.Poster}">    
+                <div>
+                  <p>Название фильма: <span>${el.Title}</span></p> 
+                  <p>Год выхода: <span>${el.Year}</span></p> 
+                  <p>Тип фильма: <span>${el.Type}</span></p> 
+                  <p>ID файла: <span>${el.imdbID}</span></p> 
+                  <button id="${el.imdbID}">Подробно о фильме</button>
+                </div>
+                <div class="description" id = D${el.imdbID}>
+                <button class="X">X</button>
+                </div>    
+              </div>`
   }
   if (showingEverything)
   showingEverything.innerHTML = films
 }
 
-function renderPagination(total: number, page: number) {
-  const totalPages = Math.ceil(total/10)
-  let pagination = ''
-  for (let i=0;i<totalPages;i++) {
-    pagination += `<button data-action="pagination">${i+1}</button>`
-  }
-  paginationDiv?.insertAdjacentHTML('beforeend', pagination)
-}
+// paginationDiv.onclick = async function (event) {
+//   const target = event.target as HTMLElement
+//   let buttonAll = paginationDiv.querySelectorAll ('button') as NodeList 
+//   if(target == )
+  
+// }
 
-document.addEventListener('click', async (e)=>{
-  const target = e.target as HTMLButtonElement
-  if (target.dataset.action == 'pagination') {
-    try {
-      const resp = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&s=${title.value}&type=${type.value}&page=${target.textContent}`)
-      const data = await resp.json()
-      render(data.Search)
-    } catch (e) {
-      console.log(e)
-    }
-  }
-})
+
+
+
+// function renderPagination(total: number, page: number) {
+//   const totalPages = Math.ceil(total/10)
+//   let pagination = ''
+//   for (let i=0;i<totalPages;i++) {
+//     pagination += `<button data-action="pagination">${i+1}</button>`
+//   }
+//   paginationDiv?.insertAdjacentHTML('beforeend', pagination)
+// }
+
+// document.addEventListener('click', async (e)=>{
+//   const target = e.target as HTMLButtonElement
+//   if (target.dataset.action == 'pagination') {
+//     try {
+//       const resp = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&s=${title.value}&type=${type.value}&page=${target.textContent}`)
+//       const data = await resp.json()
+//       render(data.Search)
+//     } catch (e) {
+//       console.log(e)
+//     }
+//   }
+// })
 //=============================================================
