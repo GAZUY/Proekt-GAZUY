@@ -44,13 +44,12 @@ form.addEventListener('submit', async (e)=>{
     //console.log(e)
   }
 })
-
-
+let a: any
+let descriptionDiv: HTMLDivElement
 showingEverything.onclick = async function (event) {
   const target = event.target as HTMLElement
-  let descriptionDiv: HTMLDivElement
-  if (target.tagName == 'BUTTON'){
-    let a = target.getAttribute('id')
+  if (target.tagName == 'BUTTON' ){
+    a = target.getAttribute('id')
     descriptionDiv = document.querySelector('#D'+a)as HTMLDivElement
     let description = ''
     if (descriptionDiv.lastChild != null) descriptionDiv.lastChild.remove()
@@ -60,13 +59,14 @@ showingEverything.onclick = async function (event) {
     descriptionDiv.append(description)
     descriptionDiv.classList.toggle('description') 
   }
+  if (target.tagName == 'INPUT' ){
+    descriptionDiv.classList.toggle('description') 
+  }
+  
 }
 
-// let x = document.querySelector('.X')as HTMLDivElement
-// x?.addEventListener ('click', function (){
-//   console.log(x.parentNode?.parentNode)
-//   x.parentNode?.classList.toggle('description')
-// } )
+
+
 
 // Poster:"https://m.media-amazon.com/images/M/MV5BN2ZmZGM3YTktOTk0Ni00Mjc4LThjYzEtYmExZGJiZjBlOTg3XkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_SX300.jpg"
 // Title
@@ -94,8 +94,8 @@ function render(arr:any[]) {
                   <p>ID файла: <span>${el.imdbID}</span></p> 
                   <button id="${el.imdbID}">Подробно о фильме</button>
                 </div>
-                <div class="description" id = D${el.imdbID}>
-                <button class="X">X</button>
+                <div class="description" id = D${el.imdbID} style= " width: 300px;height: 630px;position:absolute; top:0; left:0; box-sizing: border-box; background-color: rgb(238, 225, 51);padding: 10px;font-size: x-large;font-weight: bold;">
+                <input type="submit" class="X" value="X">
                 </div>    
               </div>`
   }
