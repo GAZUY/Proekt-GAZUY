@@ -26,6 +26,7 @@ button:hover, #search:hover, .X:hover {
     width: 20vw;
     height: auto;
     min-height: 100vh; */
+    margin-right: 17px;
     font-size: xx-large;
     background-color: rgb(190, 170, 201);
     text-align: center; 
@@ -37,10 +38,11 @@ button:hover, #search:hover, .X:hover {
   }
   .showingEverything {
     /* position: relative; */
+    margin-right: 17px;
      display: inline-block; 
     background-color: rgb(105, 94, 110);
-    border: 5px solid darkblue;
-    width: 97vw;
+    /* border: 5px solid darkblue; */
+    /* width: 97vw; */
     /* margin: auto;
     margin-right: 0vh;
     width: 78vw;
