@@ -81,10 +81,19 @@ showingEverything.onclick = async function (event) {
 // imdbID
 // :
 // "tt0475711"
+function wait(ms: number) {
+  return new Promise((resolve)=>{setTimeout(()=>resolve(true),ms)})
+}
 
-function render(arr:any[]) {
+
+async function render(arr:any[]) {
   let films = ''
+  // let i = 0
   for (let el of arr) {
+    await wait(500) 
+    //  i++
+    // (function(i){
+    //   setTimeout(function(){
     films += `<div class="flex">
                 <img src="${el.Poster}">    
                 <div>
@@ -98,10 +107,20 @@ function render(arr:any[]) {
                 <input type="submit" class="X" value="X">
                 </div>    
               </div>`
+              if (showingEverything)
+              showingEverything.innerHTML = films;
+          //   }, 100 * (i + 1));
+          // })(i);
+          // i ++
   }
-  if (showingEverything)
-  showingEverything.innerHTML = films
+
+  //   if (showingEverything)
+  // showingEverything.innerHTML = films;
+
+  // if (showingEverything)
+  // showingEverything.innerHTML = films
 }
+
 
 // paginationDiv.onclick = async function (event) {
 //   const target = event.target as HTMLElement
