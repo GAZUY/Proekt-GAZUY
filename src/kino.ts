@@ -20,7 +20,8 @@ const form = document.forms[0]
 const title = form.querySelector('#title') as HTMLInputElement
 const type = form.querySelector('#type') as HTMLSelectElement
 const showingEverything =  document.querySelector('.showingEverything') as HTMLDivElement
-const paginationDiv = document.querySelector('.pages')as HTMLDivElement
+const paginationDiv = document.querySelector('#pages')as HTMLDivElement
+const paginationButton = document.querySelectorAll('#pages button') as NodeList
 
 // try {
 //   const resp = await fetch(`https://api.service-kp.com/oauth2/device?grant_type=device_code&client_id=myclient&client_secret=mysecret`)
@@ -68,6 +69,8 @@ showingEverything.onclick = async function (event) {
 
 
 
+
+
 // Poster:"https://m.media-amazon.com/images/M/MV5BN2ZmZGM3YTktOTk0Ni00Mjc4LThjYzEtYmExZGJiZjBlOTg3XkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_SX300.jpg"
 // Title
 // :
@@ -91,9 +94,6 @@ async function render(arr:any[]) {
   // let i = 0
   for (let el of arr) {
     await wait(500) 
-    //  i++
-    // (function(i){
-    //   setTimeout(function(){
     films += `<div class="flex">
                 <img src="${el.Poster}">    
                 <div>
@@ -109,16 +109,22 @@ async function render(arr:any[]) {
               </div>`
               if (showingEverything)
               showingEverything.innerHTML = films;
-          //   }, 100 * (i + 1));
-          // })(i);
-          // i ++
   }
+  if (showingEverything.lastChild != null) paginationDiv.removeAttribute('.description'); paginationDiv.setAttribute('class','pages')
+}
+paginationDiv.onclick = async function (event) {
+  const target = event.target as HTMLElement
+  if (target == paginationButton[3]){
+    try {
+      const resp = await fetch(`http://www.omdbapi.com/?apikey=dca05d40&s=${title.value}&type=${type.value}&page=10`)
+      const data = await resp.json()
+      // console.log(paginationButton[2].value)
+       render(data.Search)
+    } catch(e) {
+      console.log(e)
+    }
 
-  //   if (showingEverything)
-  // showingEverything.innerHTML = films;
-
-  // if (showingEverything)
-  // showingEverything.innerHTML = films
+  }
 }
 
 
