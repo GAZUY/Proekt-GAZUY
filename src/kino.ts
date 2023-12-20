@@ -1,4 +1,5 @@
 import "./kino.css"
+import '@justinribeiro/lite-youtube'
 // let form = document.forms[0]
 
 // let title = form.querySelector('#title') as HTMLInputElement
